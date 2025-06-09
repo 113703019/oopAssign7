@@ -6,12 +6,13 @@
 
 FFmpeg (on Windows) is required for the music to play.
 
-1. Install FFMpeg from https://ffmpeg.org/download.html
-2. Unzip the file to get a directory.
-3. Right click on the Windows icon, go to Settings -> Advanced System Settings -> Environment Variables.
-4. In the "System variables" section, double click on "Path".
-5. Add the directory to Path. Remember to confirm your changes.
-6. Restart the terminal for it to take effect.
+1. Go to https://ffmpeg.org/download.html, scroll down to "More downloading options" -> "Get packages & executable files".
+2. Download the executable file from one of the sources. (I used Windows builds from gyan.dev -> ffmpeg-git-essentials.7z)
+3. Unzip the file to get a directory.
+4. Right click on the Windows icon, go to Settings -> Advanced System Settings -> Environment Variables.
+5. In the "System variables" section, double click on "Path".
+6. In the directory from step 3, there should be a "bin" directory. Add it to Path. Remember to confirm your changes.
+7. Restart the terminal for it to take effect.
 
 ### Introduction
 
