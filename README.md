@@ -8,7 +8,7 @@ To install the dependencies, I developed the project on Ubuntu using my personal
 I installed mpg123 for the music playing feature.
 If the project failed to compile, try installing mpg123 (around 4 MB):
 ```console
-sudo apt install mpg123
+$ sudo apt install mpg123
 ```
 
 ### Introduction
