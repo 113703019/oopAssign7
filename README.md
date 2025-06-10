@@ -5,6 +5,7 @@
 
 ## How to play
 W - Jump
+
 A / D - Left / Right
 
 You have a total of 3 hearts.
