@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/exec.dir/src/AnsiPrint.cpp.o"
   "CMakeFiles/exec.dir/src/AnsiPrint.cpp.o.d"
-  "CMakeFiles/exec.dir/src/RPSGameObject.cpp.o"
-  "CMakeFiles/exec.dir/src/RPSGameObject.cpp.o.d"
   "CMakeFiles/exec.dir/src/controller.cpp.o"
   "CMakeFiles/exec.dir/src/controller.cpp.o.d"
   "CMakeFiles/exec.dir/src/gameObject.cpp.o"

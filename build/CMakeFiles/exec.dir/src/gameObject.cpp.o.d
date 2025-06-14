@@ -47,7 +47,6 @@ CMakeFiles/exec.dir/src/gameObject.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/cstddef \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/unit.h \
- /home1/student/stud113/s11319/oop/oopAssign/assign7/include/RPSGameObject.h \
- /home1/student/stud113/s11319/oop/oopAssign/assign7/include/collider.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/gameObject.h \
+ /home1/student/stud113/s11319/oop/oopAssign/assign7/include/collider.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/gameObject.h

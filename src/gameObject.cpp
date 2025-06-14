@@ -27,8 +27,10 @@ bool GameObject::intersect(ICollider *ogOther){
         Range y;
     };
     Position oPos = other->getPosition();
-    Coverage tCover = {{_pos.x(),_pos.x()+RPS_OBJECT_WIDTH},{_pos.y(),_pos.y()+RPS_OBJECT_HEIGHT}};
-    Coverage oCover = {{oPos.x(),oPos.x()+RPS_OBJECT_WIDTH},{oPos.y(),oPos.y()+RPS_OBJECT_HEIGHT}};
+    Coverage tCover = {{_pos.x(),_pos.x()+int(icon_width(this->getIcon()))},
+					   {_pos.y(),_pos.y()+int(icon_height(this->getIcon()))}};
+    Coverage oCover = {{oPos.x(),oPos.x()+int(icon_width(other->getIcon()))},
+					   {oPos.y(),oPos.y()+int(icon_height(other->getIcon()))}};
 
     // I made it so that the collision works even if they simply collide (not intersect)
     int range = 1;
@@ -72,3 +74,15 @@ Wall::Wall(Position pos)
 	:GameObject(iconFac.newIcon(CYAN,2,2),pos) {}
 
 void Wall::update(Position move){}
+
+void Wall::onCollision(ICollider *ogOther){
+	// The wall can only collide with 2 types of objects:
+	// (1) Player
+	// (2) Damage - Enemies
+	GameObject* other = dynamic_cast<GameObject*>(ogOther);
+	/*if(other==Player){
+		// Block the player, do not let it go through walls or floors.
+	} else if(other==Enemy){
+		// Block the enemy, do not let it go through walls or floors.
+	}*/
+}

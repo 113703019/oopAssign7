@@ -6,14 +6,9 @@
 #include <unistd.h>
 #include <termios.h>
 
-#include "RPSGameObject.h"
 #include "environment.h"
 #include "controller.h"
 #include "gameObjectFactory.h"
-
-// For music
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_mixer.h"
 
 Controller::Controller(View& view) : _view(view){}
 
@@ -33,23 +28,14 @@ void Controller::run() {
 	// init game objects
 	srand(time(NULL));
 	GameObjectFactory objFactory = GameObjectFactory::newFactory();
-	// Letting the player start easy, okay? R : P : S = 6(5NPC+1Player) : 5 : 5
-	_objs.push_back(objFactory.newRPS(
-				/*RPSType*/ ROCK,
-				/*Random direction*/ static_cast<Direction>(rand()%4),
-				/*Random posX*/ rand()%(GAME_WINDOW_WIDTH - RPS_OBJECT_WIDTH),
-				/*Random posY*/ rand()%(GAME_WINDOW_HEIGHT - RPS_OBJECT_HEIGHT),
-				/*Is Player?*/ true));
+	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
+	std::cout << typeid(_objs[0]).name() << std::endl; //debug
 
-	for(int i=0;i<15;i++)
-		_objs.push_back(objFactory.newRPS(
-					/*RPSType*/ static_cast<RPSType>(i%3),
-					/*Random direction*/ static_cast<Direction>(rand()%4),
-					/*Random posX*/ rand()%(GAME_WINDOW_WIDTH - RPS_OBJECT_WIDTH),
-					/*Random posY*/ rand()%(GAME_WINDOW_HEIGHT - RPS_OBJECT_HEIGHT),
-					/*Is Player?*/ false));
+	// Make a map...
+	// Make enemies...
+	// Make a goal...
 	
-    int count[3] = {0,0,0}; // Default reset value. ROCK,PAPER,SCISSORS
+    int hp = 3;
 	
 	// Main loop
     while (true) {
@@ -60,31 +46,13 @@ void Controller::run() {
         // ESC to exit program
         if(input==27) break;
 
-		// TAB to change target
-		if(input==9){
-			for(int i=0;i<_objs.size();i++){
-				if(i==target){
-					_objs[i]->isPlayer = false;
-					_objs[i]->setIcon(ROCK,false);
-					_view.updateGameObject(_objs[i]);
-					continue;
-				} else if((_objs[i]->getType()==ROCK && i>target)|| target==count[ROCK]-1){
-					_objs[i]->isPlayer = true;
-					_objs[i]->setIcon(ROCK,true);
-					target = i;
-					_view.updateGameObject(_objs[i]);
-					break;
-				}
-			}
-		} _view.render();
-
 		Position playerMove = this->handleInput(input);
 
         _view.resetLatest();
-        for(RPSGameObject* obj : _objs){
-			// Move the objects
-			if(obj->isPlayer) moveInMap(obj,playerMove);
-			else moveInMap(obj);
+        for(GameObject* obj : _objs){
+			// Move the enemies
+			/*if(obj->isPlayer) moveInMap(obj,playerMove);
+			else moveInMap(obj);*/
             _view.updateGameObject(obj);
         } _view.render();
 
@@ -101,17 +69,8 @@ void Controller::run() {
 		} _view.render();
 
 		// Check if game ended
-		for(RPSGameObject* obj : _objs){
-			// Count the objects
-            // This code seems stupid tbh but I don't know how to fix for now
-            if(obj->getType()==ROCK) count[ROCK]++;
-            else if(obj->getType()==PAPER) count[PAPER]++;
-            else if(obj->getType()==SCISSORS) count[SCISSORS]++;
-		}
-		for(int cnt : count)
-			if(cnt==0) break;
+		//if(hp<=0 || Reached goal) break;
 
-		std::cout << "Press Q to cheer for your team!" << std::endl; // Introduce feature
         end = clock();
 
         // frame rate normalization
@@ -121,16 +80,14 @@ void Controller::run() {
         if(frameDelay > 0) std::this_thread::sleep_for(std::chrono::milliseconds(frameDelay)); // frame delay
     }
 
-	// Check the winner
-	std::string winner = "None";
-	if(count[PAPER]==0 && count[SCISSORS]==0) winner = "You(Rock)";
-	else if(count[ROCK]==0 && count[SCISSORS]==0) winner = "Paper";
-	else if(count[ROCK]==0 && count[PAPER]==0) winner = "Scissors";
-	if(winner!="None") std::cout << winner << " win!!!" << std::endl;
+	// Check win / lose
+	if(hp<=0) std::cout << "Wasted." << std::endl;
+	else std::cout << "Congradulations!" << std::endl;
+	//std::cout << "(Some key) Replay" << std::endl;
 }
 
-void Controller::moveInMap(RPSGameObject *obj,Position playerMove){
-	int xCheck,yCheck,x,y;
+void Controller::moveInMap(GameObject *obj,Position playerMove){
+	/*int xCheck,yCheck,x,y;
 	if(obj->isPlayer){
 		xCheck = obj->getPosition().x()+playerMove.x();
 		yCheck = obj->getPosition().y()+playerMove.y();
@@ -140,7 +97,7 @@ void Controller::moveInMap(RPSGameObject *obj,Position playerMove){
 		yCheck = obj->getPosition().y()+y;
 	}
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH && yCheck>=0 && yCheck<GAME_WINDOW_HEIGHT)
-		obj->isPlayer ? obj->update(playerMove) : obj->update({x,y});
+		obj->isPlayer ? obj->update(playerMove) : obj->update({x,y});*/
 }
 
 Position Controller::handleInput(int keyInput){

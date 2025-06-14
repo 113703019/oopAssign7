@@ -7,16 +7,12 @@
 #define GAMEOBJECTFACTORY_H
 
 #include "gameObject.h"
-#include "RPSGameObject.h"
 
 class GameObjectFactory{
 	public:
 		static GameObjectFactory newFactory(){ return GameObjectFactory(); }
-		/*
 		Player* newPlayer(int,int);
 		Wall* newWall(int,int);
-		*/
-		RPSGameObject* newRPS(RPSType,Direction,int,int,bool);
 	private:
 		GameObjectFactory();
 };

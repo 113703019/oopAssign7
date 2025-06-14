@@ -8,5 +8,3 @@ size_t icon_width(const Icon& icon) {
 size_t icon_height(const Icon& icon) {
     return icon.size();
 }
-
-

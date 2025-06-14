@@ -7,14 +7,12 @@
 #define ICONFACTORY_H
 
 #include "icon.h"
-#include "RPSGameObject.h"
+#include "gameObject.h"
 
 class IconFactory{
 	public:
 		static IconFactory newFactory() { return IconFactory(); }
-		Icon newIcon(RPSType,int,int,bool);
-		Color setColor(RPSType type);
-		char setChar(RPSType type);
+		Icon newIcon(Color,int,int);
 	private:
 		IconFactory();
 };

@@ -11,6 +11,7 @@ class GameObject : public ICollider{
 		GameObject(Icon,Position);
     	Position getPosition() const;
   	 	Icon getIcon() const;
+
    	 	virtual void update(Position) = 0;
 		bool intersect(ICollider *) override;
 	protected:
@@ -30,6 +31,7 @@ class Wall : public GameObject{
 	public:
 		Wall(Position);
 	    void update(Position) override;
+		void onCollision(ICollider *) override;
 };
 
 #endif

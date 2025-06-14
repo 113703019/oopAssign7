@@ -49,7 +49,5 @@ CMakeFiles/exec.dir/src/iconFactory.cpp.o: \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/unit.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/iconFactory.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/icon.h \
- /home1/student/stud113/s11319/oop/oopAssign/assign7/include/RPSGameObject.h \
- /home1/student/stud113/s11319/oop/oopAssign/assign7/include/collider.h \
  /home1/student/stud113/s11319/oop/oopAssign/assign7/include/gameObject.h \
- /home1/student/stud113/s11319/oop/oopAssign/assign7/include/RPSGameObject.h
+ /home1/student/stud113/s11319/oop/oopAssign/assign7/include/collider.h

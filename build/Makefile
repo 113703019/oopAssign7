@@ -153,30 +153,6 @@ src/AnsiPrint.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/src/AnsiPrint.cpp.s
 .PHONY : src/AnsiPrint.cpp.s
 
-src/RPSGameObject.o: src/RPSGameObject.cpp.o
-.PHONY : src/RPSGameObject.o
-
-# target to build an object file
-src/RPSGameObject.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/src/RPSGameObject.cpp.o
-.PHONY : src/RPSGameObject.cpp.o
-
-src/RPSGameObject.i: src/RPSGameObject.cpp.i
-.PHONY : src/RPSGameObject.i
-
-# target to preprocess a source file
-src/RPSGameObject.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/src/RPSGameObject.cpp.i
-.PHONY : src/RPSGameObject.cpp.i
-
-src/RPSGameObject.s: src/RPSGameObject.cpp.s
-.PHONY : src/RPSGameObject.s
-
-# target to generate assembly for a file
-src/RPSGameObject.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/src/RPSGameObject.cpp.s
-.PHONY : src/RPSGameObject.cpp.s
-
 src/controller.o: src/controller.cpp.o
 .PHONY : src/controller.o
 
@@ -357,9 +333,6 @@ help:
 	@echo "... src/AnsiPrint.o"
 	@echo "... src/AnsiPrint.i"
 	@echo "... src/AnsiPrint.s"
-	@echo "... src/RPSGameObject.o"
-	@echo "... src/RPSGameObject.i"
-	@echo "... src/RPSGameObject.s"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"

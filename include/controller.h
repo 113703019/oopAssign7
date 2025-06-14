@@ -4,19 +4,19 @@
 #include <termios.h>
 #include <vector>
 #include "view.h"
-#include "RPSGameObject.h"
+#include "gameObject.h"
 
 class Controller{
 	public:
     	Controller(View&);
 	    void run();
 	private:
-		void moveInMap(RPSGameObject*,Position playerMove={0,0});
+		void moveInMap(GameObject*,Position playerMove={0,0});
     	Position handleInput(int);
     	void update();
 
     	// Model
-	    std::vector<RPSGameObject*> _objs;
+	    std::vector<GameObject*> _objs;
 
     	// View
 	    View& _view; 
