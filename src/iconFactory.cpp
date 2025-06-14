@@ -6,12 +6,12 @@
 IconFactory::IconFactory(){}
 
 Icon IconFactory::newIcon(Color color, int width, int height){
-	Cell cell(color,0);
+	Cell cell(color,' ');
 	Icon icon;
-	std::vector<Cell> cellVec;
 	for(int i=0;i<height;i++){
+		std::vector<Cell> cellVec;
 		for(int j=0;j<width;j++)
 			cellVec.push_back(cell);
-	} icon.push_back(cellVec);
-	return icon;
+		icon.push_back(cellVec);
+	} return icon;
 }

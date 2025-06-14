@@ -21,16 +21,12 @@ void Controller::run() {
     // init state
     int input = -1;
     clock_t start, end;
-	int target = 0; // For target changing
-					// Initially, the player is the first element added
-					// so the target(player) is 0
 
 	// init game objects
 	srand(time(NULL));
 	GameObjectFactory objFactory = GameObjectFactory::newFactory();
 	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
-	std::cout << typeid(_objs[0]).name() << std::endl; //debug
-
+		
 	// Make a map...
 	// Make enemies...
 	// Make a goal...
@@ -51,8 +47,8 @@ void Controller::run() {
         _view.resetLatest();
         for(GameObject* obj : _objs){
 			// Move the enemies
-			/*if(obj->isPlayer) moveInMap(obj,playerMove);
-			else moveInMap(obj);*/
+			if(dynamic_cast<Player*>(obj)) moveInMap(obj,playerMove);
+			else moveInMap(obj);
             _view.updateGameObject(obj);
         } _view.render();
 
@@ -69,14 +65,14 @@ void Controller::run() {
 		} _view.render();
 
 		// Check if game ended
-		//if(hp<=0 || Reached goal) break;
+		if(hp<=0/* || Reached goal*/) break;
 
         end = clock();
 
         // frame rate normalization
         double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
         if (time_taken > SPF) continue;
-        int frameDelay = int((SPF - time_taken) * 500); // 0.05 seconds
+        int frameDelay = int((SPF - time_taken) * 50); // 0.005 seconds
         if(frameDelay > 0) std::this_thread::sleep_for(std::chrono::milliseconds(frameDelay)); // frame delay
     }
 
@@ -87,17 +83,17 @@ void Controller::run() {
 }
 
 void Controller::moveInMap(GameObject *obj,Position playerMove){
-	/*int xCheck,yCheck,x,y;
-	if(obj->isPlayer){
+	int xCheck,yCheck,x,y;
+	if(dynamic_cast<Player*>(obj)){
 		xCheck = obj->getPosition().x()+playerMove.x();
 		yCheck = obj->getPosition().y()+playerMove.y();
 	} else{
-		x = rand()%3-1; y = rand()%3-1; // x & y = [-1,1]
+		x = rand()%3-1; y = 0; // Enemy movements, x = [-1,1]
 		xCheck = obj->getPosition().x()+x;
 		yCheck = obj->getPosition().y()+y;
 	}
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH && yCheck>=0 && yCheck<GAME_WINDOW_HEIGHT)
-		obj->isPlayer ? obj->update(playerMove) : obj->update({x,y});*/
+		dynamic_cast<Player*>(obj) ? obj->update(playerMove) : obj->update({x,y});
 }
 
 Position Controller::handleInput(int keyInput){
