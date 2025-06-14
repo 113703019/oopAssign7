@@ -32,10 +32,12 @@ void Controller::run() {
 	// Map
 	_objs.push_back(objFactory.newWall(1,4,7,0));
 	
-	// Make enemies...
+	// Enemies
+	_objs.push_back(objFactory.newEnemy(10,1));
 	// Make a goal...
 	
     int hp = 3;
+	int enemyLogic = -5; // Controls enemy movement: [-5,5]
 	
 	// Main loop
     while (true) {
@@ -47,12 +49,12 @@ void Controller::run() {
         if(input==27) break;
 
 		Position playerMove = this->handleInput(input);
+		if(enemyLogic>5) enemyLogic = -5; // Controls enemy movement: [-5,5]
 
         _view.resetLatest();
         for(GameObject* obj : _objs){
-			// Move the enemies
 			if(dynamic_cast<Player*>(obj)) moveInMap(obj,playerMove);
-			else moveInMap(obj);
+			else if(dynamic_cast<Enemy*>(obj)) moveInMap(obj,{0,0},enemyLogic++);
             _view.updateGameObject(obj);
         } _view.render();
 
@@ -86,18 +88,23 @@ void Controller::run() {
 	//std::cout << "(Some key) Replay" << std::endl;
 }
 
-void Controller::moveInMap(GameObject *obj,Position playerMove){
+void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	int xCheck,yCheck,x,y;
 	if(dynamic_cast<Player*>(obj)){
 		xCheck = obj->getPosition().x()+playerMove.x();
-		yCheck = obj->getPosition().y()+playerMove.y();
-	} else{
-		x = rand()%3-1; y = 0; // Enemy movements, x = [-1,1]
+		yCheck = obj->getPosition().y()+playerMove.y()+1; // Free fall, y opposite
+	} else if(dynamic_cast<Enemy*>(obj)){
+		x = (enemyLogic==0 ? 0 : (enemyLogic>0 ? 1 : -1)); y = 0; // Enemy movements
 		xCheck = obj->getPosition().x()+x;
-		yCheck = obj->getPosition().y()+y;
+		yCheck = obj->getPosition().y()+y+1; // Free fall, y opposite
 	}
-	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH && yCheck>=0 && yCheck<GAME_WINDOW_HEIGHT)
-		dynamic_cast<Player*>(obj) ? obj->update(playerMove) : obj->update({x,y});
+
+	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH && yCheck<GAME_WINDOW_HEIGHT){
+		if(dynamic_cast<Player*>(obj)) // Player
+			obj->update({playerMove.x(),playerMove.y()-(yCheck>=0 ? 0 : yCheck)});
+		else if(dynamic_cast<Enemy*>(obj)) // Enemies
+			obj->update({x,y});
+	}
 }
 
 Position Controller::handleInput(int keyInput){
@@ -106,11 +113,10 @@ Position Controller::handleInput(int keyInput){
     // handle key events.
 	switch(keyInput){
 		case('w'):{ // y opposite
-			return {0,-1};
+			// Make the player jump
+			return {0,-2};
 		} case('a'):{
 			return {-1,0};
-		} case('s'):{ // y opposite
-			return {0,1};
 		} case('d'):{
 			return {1,0};
 		} default:

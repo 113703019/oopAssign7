@@ -13,6 +13,7 @@ class GameObjectFactory{
 		static GameObjectFactory newFactory(){ return GameObjectFactory(); }
 		Player* newPlayer(int,int);
 		Wall* newWall(int,int,int,int);
+		Enemy* newEnemy(int,int);
 	private:
 		GameObjectFactory();
 };

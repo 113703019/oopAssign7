@@ -11,7 +11,7 @@ class Controller{
     	Controller(View&);
 	    void run();
 	private:
-		void moveInMap(GameObject*,Position playerMove={0,0});
+		void moveInMap(GameObject*,Position playerMove={0,0},int enemyLogic=0);
     	Position handleInput(int);
     	void update();
 

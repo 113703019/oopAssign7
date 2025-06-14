@@ -512,6 +512,7 @@ CMakeFiles/exec.dir/src/gameObject.cpp.o: ../src/gameObject.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../include/environment.h \
   ../include/iconFactory.h \
   ../include/icon.h \
   /usr/include/c++/11/vector \

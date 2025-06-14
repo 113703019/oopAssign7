@@ -34,4 +34,11 @@ class Wall : public GameObject{
 		void onCollision(ICollider *) override;
 };
 
+class Enemy : public GameObject{
+	public:
+		Enemy(Position);
+		void update(Position) override;
+		void onCollision(ICollider *) override;
+};
+
 #endif

@@ -1,4 +1,5 @@
 #include <cmath>
+#include "environment.h"
 #include "iconFactory.h"
 #include "gameObject.h"
 
@@ -48,7 +49,7 @@ bool GameObject::intersect(ICollider *ogOther){
 }
 
 Player::Player(Position pos)
-	:GameObject(iconFac.newIcon(RED,1,1),pos) {}
+	:GameObject(iconFac.newIcon(YELLOW,1,1),pos) {}
 
 void Player::update(Position move){
 	_pos.x() += move.x();
@@ -60,12 +61,11 @@ void Player::onCollision(ICollider *ogOther){
 	// (1) Boundaries - Walls & Floors
 	// (2) Damage - Enemies & Traps
 	// (3) Goal - The green door
-    GameObject* other = dynamic_cast<GameObject*>(ogOther);
-    /*if(other==Boundaries){
+    /*if(dynamic_cast<Wall*>(ogOther)){
         // Block the player, do not let it go through walls or floors.
-	} else if(other==Enemy || other==Trap){
+	} else if(dynamic_cast<Enemy*>(ogOther)){
 		// Damage the player. Better if the player goes flying for a little.
-	} else if(other==Goal){
+	} else if(dynamic_cast<Goal*>(ogOther)){
 		// End the game. The player wins.
 	}*/
 }
@@ -82,9 +82,29 @@ void Wall::onCollision(ICollider *ogOther){
 	// (1) Player
 	// (2) Damage - Enemies
 	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(other==Player){
+	/*if(dynamic_cast<Player*>(ogOther)){
 		// Block the player, do not let it go through walls or floors.
-	} else if(other==Enemy){
+	} else if(dynamic_cast<Enemy*>(ogOther)){
 		// Block the enemy, do not let it go through walls or floors.
 	}*/
+}
+
+Enemy::Enemy(Position pos)
+	:GameObject(iconFac.newIcon(RED,1,1),pos) {}
+
+void Enemy::update(Position move){
+	_pos.x() += move.x();
+	_pos.y() += move.y();
+}
+
+void Enemy::onCollision(ICollider *ogOther){
+	// The enemy can only collide with 2 types of objects:
+	// (1) Boundaries - Walls / Floors
+	// (2) Player
+	GameObject* other = dynamic_cast<GameObject*>(ogOther);
+	/*if(dynamic_cast<Wall*>(ogOther)){
+        // Block the enemy, do not let it go through walls or floors.
+    } else if(dynamic_cast<Player*>(ogOther)){
+        // Damage the player. Better if the player goes flying for a little.
+    }*/
 }
