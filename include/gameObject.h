@@ -29,7 +29,7 @@ class Player : public GameObject{
 
 class Wall : public GameObject{
 	public:
-		Wall(Position);
+		Wall(Position,Position);
 	    void update(Position) override;
 		void onCollision(ICollider *) override;
 };

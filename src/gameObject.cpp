@@ -1,4 +1,4 @@
-// TODO implementation
+#include <cmath>
 #include "iconFactory.h"
 #include "gameObject.h"
 
@@ -70,8 +70,10 @@ void Player::onCollision(ICollider *ogOther){
 	}*/
 }
 
-Wall::Wall(Position pos)
-	:GameObject(iconFac.newIcon(CYAN,2,2),pos) {}
+Wall::Wall(Position pos,Position extend)
+	:GameObject(iconFac.newIcon(/*color*/CYAN,
+								/*width*/1+abs(extend.x()),
+								/*height*/1+abs(extend.y())),pos) {}
 
 void Wall::update(Position move){}
 

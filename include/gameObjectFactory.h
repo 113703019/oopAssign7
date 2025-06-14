@@ -12,7 +12,7 @@ class GameObjectFactory{
 	public:
 		static GameObjectFactory newFactory(){ return GameObjectFactory(); }
 		Player* newPlayer(int,int);
-		Wall* newWall(int,int);
+		Wall* newWall(int,int,int,int);
 	private:
 		GameObjectFactory();
 };

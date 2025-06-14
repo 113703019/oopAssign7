@@ -25,9 +25,13 @@ void Controller::run() {
 	// init game objects
 	srand(time(NULL));
 	GameObjectFactory objFactory = GameObjectFactory::newFactory();
+	
+	// Player
 	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
 		
-	// Make a map...
+	// Map
+	_objs.push_back(objFactory.newWall(1,4,7,0));
+	
 	// Make enemies...
 	// Make a goal...
 	

@@ -420,10 +420,7 @@ CMakeFiles/exec.dir/src/controller.cpp.o: ../src/controller.cpp \
 
 CMakeFiles/exec.dir/src/gameObject.cpp.o: ../src/gameObject.cpp \
   /usr/include/stdc-predef.h \
-  ../include/iconFactory.h \
-  ../include/icon.h \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/cmath \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -436,10 +433,60 @@ CMakeFiles/exec.dir/src/gameObject.cpp.o: ../src/gameObject.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/bits/cpp_type_traits.h \
   /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/c++/11/bits/std_abs.h \
+  /usr/include/stdlib.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/11/bits/specfun.h \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/move.h \
@@ -452,6 +499,22 @@ CMakeFiles/exec.dir/src/gameObject.cpp.o: ../src/gameObject.cpp \
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../include/iconFactory.h \
+  ../include/icon.h \
+  /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/allocator.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
   /usr/include/c++/11/ext/new_allocator.h \
@@ -470,7 +533,6 @@ CMakeFiles/exec.dir/src/gameObject.cpp.o: ../src/gameObject.cpp \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
   /usr/include/c++/11/cstddef \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
   ../include/unit.h \
   ../include/gameObject.h \
   ../include/collider.h \
@@ -1086,6 +1148,40 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
 
+/usr/include/libintl.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+
+/usr/include/c++/11/bits/locale_facets_nonio.h:
+
+/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
+
+/usr/include/asm-generic/ioctl.h:
+
+/usr/include/linux/ioctl.h:
+
+/usr/include/asm-generic/ioctls.h:
+
+/usr/include/x86_64-linux-gnu/sys/ioctl.h:
+
+../src/view.cpp:
+
+../src/main.cpp:
+
+../src/icon.cpp:
+
+../src/gameObjectFactory.cpp:
+
+../include/iconFactory.h:
+
+/usr/include/c++/11/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/11/tr1/poly_hermite.tcc:
+
 /usr/include/c++/11/ext/atomicity.h:
 
 /usr/include/c++/11/bits/stl_pair.h:
@@ -1113,8 +1209,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 /usr/include/c++/11/ext/type_traits.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
-
-../include/iconFactory.h:
 
 /usr/include/unistd.h:
 
@@ -1156,27 +1250,27 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-../src/gameObjectFactory.cpp:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/c++/11/bits/nested_exception.h:
-
-/usr/include/c++/11/bits/postypes.h:
 
 /usr/include/c++/11/cstdint:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
-/usr/include/c++/11/bits/stringfwd.h:
+/usr/include/c++/11/tr1/special_function_util.h:
 
-/usr/include/c++/11/iostream:
+/usr/include/c++/11/bits/stringfwd.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
-../src/icon.cpp:
+/usr/include/x86_64-linux-gnu/bits/ioctls.h:
+
+/usr/include/c++/11/bits/ios_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -1200,6 +1294,10 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
+/usr/include/x86_64-linux-gnu/asm/ioctl.h:
+
+/usr/include/c++/11/bits/functexcept.h:
+
 /usr/include/c++/11/bits/concept_check.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
@@ -1214,9 +1312,11 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
-/usr/include/libintl.h:
+/usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
 /usr/include/c++/11/bits/localefwd.h:
+
+/usr/include/c++/11/tr1/hypergeometric.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
@@ -1236,7 +1336,9 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+/usr/include/c++/11/locale:
+
+/usr/include/ctype.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
@@ -1247,8 +1349,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 /usr/include/c++/11/type_traits:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/11/bits/allocator.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -1292,13 +1392,7 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/termios-c_cc.h:
 
-/usr/include/c++/11/bits/functexcept.h:
-
-/usr/include/x86_64-linux-gnu/asm/ioctl.h:
-
 /usr/include/features.h:
-
-/usr/include/x86_64-linux-gnu/asm/ioctls.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
 
@@ -1350,10 +1444,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/c++/11/cstring:
-
 /usr/include/c++/11/thread:
 
 /usr/include/c++/11/ratio:
@@ -1370,21 +1460,21 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/c++/11/bits/invoke.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
 /usr/include/linux/errno.h:
-
-/usr/include/ctype.h:
-
-/usr/include/c++/11/locale:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
 /usr/include/c++/11/bits/locale_classes.h:
 
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/c++/11/tr1/gamma.tcc:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:
+
+/usr/include/c++/11/bits/allocator.h:
+
+/usr/include/c++/11/cmath:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
@@ -1410,7 +1500,9 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/c++/11/bits/stl_construct.h:
 
-/usr/include/asm-generic/ioctl.h:
+/usr/include/x86_64-linux-gnu/asm/ioctls.h:
+
+/usr/include/c++/11/tr1/exp_integral.tcc:
 
 /usr/include/c++/11/bits/functional_hash.h:
 
@@ -1432,7 +1524,11 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/asm-generic/errno.h:
 
+/usr/include/c++/11/tr1/ell_integral.tcc:
+
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/c++/11/bits/charconv.h:
 
@@ -1440,11 +1536,23 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/c++/11/bits/locale_classes.tcc:
 
+/usr/include/c++/11/iostream:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
 /usr/include/c++/11/system_error:
 
 /usr/include/c++/11/cstddef:
 
 /usr/include/c++/11/bits/stl_vector.h:
+
+../src/iconFactory.cpp:
+
+/usr/include/c++/11/ios:
+
+/usr/include/c++/11/utility:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
 /usr/include/c++/11/stdexcept:
 
@@ -1453,6 +1561,8 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 /usr/include/string.h:
 
 /usr/include/c++/11/bits/streambuf.tcc:
+
+/usr/include/c++/11/tr1/bessel_function.tcc:
 
 /usr/include/c++/11/bits/basic_ios.h:
 
@@ -1478,14 +1588,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/c++/11/bits/locale_facets.tcc:
 
-/usr/include/c++/11/ios:
-
-/usr/include/c++/11/utility:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-../src/iconFactory.cpp:
-
 /usr/include/c++/11/bits/codecvt.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
@@ -1503,8 +1605,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 /usr/include/c++/11/bits/std_thread.h:
 
 /usr/include/c++/11/bits/stl_relops.h:
-
-/usr/include/c++/11/array:
 
 /usr/include/c++/11/bits/uses_allocator.h:
 
@@ -1542,27 +1642,17 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
-/usr/include/c++/11/bits/locale_facets_nonio.h:
-
 /usr/include/termios.h:
 
 /usr/include/x86_64-linux-gnu/bits/termios.h:
 
-../src/main.cpp:
-
 /usr/include/x86_64-linux-gnu/bits/termios-c_cflag.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/x86_64-linux-gnu/bits/termios-c_lflag.h:
 
 /usr/include/x86_64-linux-gnu/bits/termios-misc.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
-
-/usr/include/c++/11/string_view:
-
-/usr/include/x86_64-linux-gnu/sys/ttydefaults.h:
 
 ../include/environment.h:
 
@@ -1584,20 +1674,40 @@ CMakeFiles/exec.dir/src/view.cpp.o: ../src/view.cpp \
 
 ../src/gameObject.cpp:
 
-../src/view.cpp:
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
-/usr/include/x86_64-linux-gnu/sys/ioctl.h:
+/usr/include/c++/11/cstring:
 
-/usr/include/c++/11/bits/ios_base.h:
+/usr/include/math.h:
 
-/usr/include/x86_64-linux-gnu/bits/ioctls.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/include/asm-generic/ioctls.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
 
-/usr/include/linux/ioctl.h:
+/usr/include/c++/11/string_view:
 
-/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
+/usr/include/x86_64-linux-gnu/sys/ttydefaults.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/c++/11/bits/postypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/c++/11/array:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/c++/11/tr1/legendre_function.tcc:
