@@ -17,3 +17,7 @@ Wall* GameObjectFactory::newWall(int pos_x,int pos_y,int extend_x,int extend_y){
 Enemy* GameObjectFactory::newEnemy(int pos_x,int pos_y){
 	return new Enemy({pos_x,pos_y});
 }
+
+Goal* GameObjectFactory::newGoal(int pos_x,int pos_y){
+	return new Goal({pos_x,pos_y});
+}

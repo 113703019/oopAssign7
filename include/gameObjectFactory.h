@@ -14,6 +14,7 @@ class GameObjectFactory{
 		Player* newPlayer(int,int);
 		Wall* newWall(int,int,int,int);
 		Enemy* newEnemy(int,int);
+		Goal* newGoal(int,int);
 	private:
 		GameObjectFactory();
 };

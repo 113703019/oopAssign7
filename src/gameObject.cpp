@@ -1,3 +1,4 @@
+#include <iostream> //debug
 #include <cmath>
 #include "environment.h"
 #include "iconFactory.h"
@@ -15,6 +16,8 @@ Icon GameObject::getIcon() const {
 Position GameObject::getPosition() const {
 	return _pos;
 }
+
+// Current problem: Some parts of the wall icon doesns't seem to be in the collide hitbox range
 
 bool GameObject::intersect(ICollider *ogOther){
     GameObject* other = dynamic_cast<GameObject*>(ogOther);
@@ -72,8 +75,8 @@ void Player::onCollision(ICollider *ogOther){
 
 Wall::Wall(Position pos,Position extend)
 	:GameObject(iconFac.newIcon(/*color*/CYAN,
-								/*width*/1+abs(extend.x()),
-								/*height*/1+abs(extend.y())),pos) {}
+		     		    /*width*/1+abs(extend.x()),
+				    /*height*/1+abs(extend.y())),pos) {}
 
 void Wall::update(Position move){}
 

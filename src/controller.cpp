@@ -31,7 +31,13 @@ void Controller::run() {
 	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
 		
 	// Map
-	_objs.push_back(objFactory.newWall(1,4,7,0));
+	_objs.push_back(objFactory.newWall(1,3,7,0));
+	_objs.push_back(objFactory.newWall(3,18,2,0));
+	_objs.push_back(objFactory.newWall(5,16,2,0));
+	_objs.push_back(objFactory.newWall(7,14,10,0));
+	_objs.push_back(objFactory.newWall(7,8,6,0));
+	_objs.push_back(objFactory.newWall(20,3,-2,0));
+	_objs.push_back(objFactory.newWall(18,3,0,6));
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
