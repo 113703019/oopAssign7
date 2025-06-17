@@ -37,7 +37,7 @@ void Controller::run() {
 	Goal* goal = dynamic_cast<Goal*>(_objs[1]);
 		
 	// Map
-	_objs.push_back(objFactory.newWall(1,3,7,0));
+	_objs.push_back(objFactory.newWall(0,4,9,0));
 	_objs.push_back(objFactory.newWall(3,18,2,0));
 	_objs.push_back(objFactory.newWall(5,16,2,0));
 	_objs.push_back(objFactory.newWall(7,14,10,0));
@@ -47,6 +47,7 @@ void Controller::run() {
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
+	_objs.push_back(objFactory.newEnemy(15,13));
 
 	int enemyLogic = -5; // Controls enemy movement: [-5,5]
 	
@@ -125,15 +126,16 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	bool onFloor = false;
 	for(int i=1;i<_objs.size();i++){
 		if(dynamic_cast<Wall*>(_objs[i]) && obj->intersect(_objs[i])
-		  && obj->getPosition().y()<_objs[i]->getPosition().y())
+		  && obj->getPosition().y()<_objs[i]->getPosition().y()){
 			onFloor = true;
+		}
 	}
 
 	// Move the object
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH){
 		if(dynamic_cast<Player*>(obj)){ // Player
 			obj->update({/*Player x*/playerMove.x(),
-				     /*Player y*/((!onFloor && yCheck<GAME_WINDOW_HEIGHT) ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
+				     /*Player y*/((!onFloor && yCheck<GAME_WINDOW_HEIGHT) ? playerMove.y()+1/*Free fall, y opposite*/ : playerMove.y())});
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
