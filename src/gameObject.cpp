@@ -102,14 +102,7 @@ void Enemy::update(Position move){
 	_pos.y() += move.y();
 }
 
-void Enemy::onCollision(ICollider *ogOther){
-	// The enemy can only collide with 1 types of object:
-	// (1) Player
-	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(dynamic_cast<Player*>(ogOther)){
-		// Damage the player. Better if the player goes flying for a little.
-	}*/
-}
+void Enemy::onCollision(ICollider *ogOther){}
 
 Goal::Goal(Position pos)
 	:GameObject(iconFac.newIcon(GREEN,1,2),pos) {}
@@ -117,10 +110,7 @@ Goal::Goal(Position pos)
 void Goal::update(Position move) {}
 
 void Goal::onCollision(ICollider *ogOther){
-	// The goal can only collide with 1 types of object:
-	// (1) Player
 	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(dynamic_cast<Player*>(ogOther)){
-		// End the game. The player wins.
-	}*/
+	if(dynamic_cast<Player*>(ogOther))
+		trigger = true;
 }

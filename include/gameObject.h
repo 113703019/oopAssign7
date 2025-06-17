@@ -46,6 +46,7 @@ class Enemy : public GameObject{
 
 class Goal : public GameObject{
 	public:
+		bool trigger = false;
 		Goal(Position);
 		void update(Position) override;
 		void onCollision(ICollider *) override;

@@ -31,6 +31,10 @@ void Controller::run() {
 	// Player
 	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
 	Player* player = dynamic_cast<Player*>(_objs[0]);
+
+	// Goal
+	_objs.push_back(objFactory.newGoal(19,1));
+	Goal* goal = dynamic_cast<Goal*>(_objs[1]);
 		
 	// Map
 	_objs.push_back(objFactory.newWall(1,3,7,0));
@@ -43,9 +47,6 @@ void Controller::run() {
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
-
-	// Goal
-	_objs.push_back(objFactory.newGoal(19,1));
 
 	int enemyLogic = -5; // Controls enemy movement: [-5,5]
 	
@@ -91,7 +92,7 @@ void Controller::run() {
 		} _view.render();
 
 		// Check if game ended
-		if(player->getHP()<=0/* || Reached goal*/) break;
+		if(player->getHP()<=0 || goal->trigger) break;
 
         end = clock();
 
