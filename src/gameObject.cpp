@@ -61,7 +61,11 @@ int GameObject::intersect(ICollider *ogOther){
 }
 
 Player::Player(Position pos)
-	:GameObject(iconFac.newIcon(YELLOW,1,1),pos) {}
+	:_hp(3),GameObject(iconFac.newIcon(YELLOW,1,1),pos) {}
+
+int Player::getHP(){
+	return _hp;
+}
 
 void Player::update(Position move){
 	_pos.x() += move.x();
@@ -73,9 +77,10 @@ void Player::onCollision(ICollider *ogOther){
 	// (1) Damage - Enemies & Traps
 	// (2) Goal - The green door
 	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(dynamic_cast<Enemy*>(ogOther)){
-		// Damage the player. Better if the player goes flying for a little.
-	} else if(dynamic_cast<Goal*>(ogOther)){
+	if(dynamic_cast<Enemy*>(ogOther)){
+		// Damage the player.
+		_hp--;
+	}/* else if(dynamic_cast<Goal*>(ogOther)){
 		// End the game. The player wins.
 	}*/
 }

@@ -22,9 +22,12 @@ class GameObject : public ICollider{
 class Player : public GameObject{
 	public:
 		Player(Position);
+		int getHP();
 		void update(Position) override;
 		void move(int);
 		void onCollision(ICollider *) override;
+	private:
+		int _hp;
 };
 
 class Wall : public GameObject{

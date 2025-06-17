@@ -30,6 +30,7 @@ void Controller::run() {
 	
 	// Player
 	_objs.push_back(objFactory.newPlayer(1,1)); // Starting position
+	Player* player = dynamic_cast<Player*>(_objs[0]);
 		
 	// Map
 	_objs.push_back(objFactory.newWall(1,3,7,0));
@@ -46,7 +47,6 @@ void Controller::run() {
 	// Goal
 	_objs.push_back(objFactory.newGoal(19,1));
 
-    int hp = 3;
 	int enemyLogic = -5; // Controls enemy movement: [-5,5]
 	
 	// Main loop
@@ -69,13 +69,14 @@ void Controller::run() {
         } _view.render();
 
 	// Show hp points
-	for(int i=0;i<9;i++){
-		if(hp>=(i/3+1)){
+	/*for(int i=0;i<9;i++){
+		if(player->getHP()>=(i/3+1)){
 		if(i%3==0) std::cout << '<';
 		else if(i%3==1) std::cout << '3';
 		else std::cout << ' ';
 		}
-	} std::cout << std::endl;
+	} std::cout << std::endl;*/
+	std::cout << "Remaining hearts: " << player->getHP() << std::endl;
 
 		// Collision
 		for(int A=0;A<_objs.size();A++){
@@ -90,7 +91,7 @@ void Controller::run() {
 		} _view.render();
 
 		// Check if game ended
-		if(hp<=0/* || Reached goal*/) break;
+		if(player->getHP()<=0/* || Reached goal*/) break;
 
         end = clock();
 
@@ -102,13 +103,14 @@ void Controller::run() {
     }
 
 	// Check win / lose
-	if(hp<=0) std::cout << "Wasted." << std::endl;
+	if(player->getHP()<=0) std::cout << "Wasted." << std::endl;
 	else std::cout << "Congradulations!" << std::endl;
 	//std::cout << "(Some key) Replay" << std::endl;
 }
 
 void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	int xCheck,yCheck,x,y;
+	// Calculate xCheck and yCheck
 	if(dynamic_cast<Player*>(obj)){
 		xCheck = obj->getPosition().x()+playerMove.x();
 		yCheck = obj->getPosition().y()+playerMove.y()+1; // Free fall, y opposite
@@ -118,17 +120,25 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 		yCheck = obj->getPosition().y()+y+1; // Free fall, y opposite
 	}
 
+	// Determine the onFloor flag
+	bool onFloor = false;
+	for(int i=1;i<_objs.size();i++){
+		if(dynamic_cast<Wall*>(_objs[i]) && player->intersect(_objs[i]))
+			onFloor = true;
+	}
+
+	// Move the object
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH){
 		if(dynamic_cast<Player*>(obj)){ // Player
 			obj->update({/*Player x*/playerMove.x(),
-				     /*Player y*/(yCheck<GAME_WINDOW_HEIGHT ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
+				     /*Player y*/((!onFloor && yCheck<GAME_WINDOW_HEIGHT) ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
 			//	  << playerMove.y()+(yCheck>=0 ? 0 : yCheck) << ")" << std::endl; //debug
 		}else if(dynamic_cast<Enemy*>(obj)) // Enemies
 			obj->update({/*Enemy x*/x,
-				     /*Enemy y*/(yCheck<GAME_WINDOW_HEIGHT ? y+1/*Free fall, y opposite*/ : 0)});
+				     /*Enemy y*/((!onFloor && yCheck<GAME_WINDOW_HEIGHT) ? y+1/*Free fall, y opposite*/ : 0)});
 	}
 }
 
