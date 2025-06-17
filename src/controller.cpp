@@ -39,7 +39,7 @@ void Controller::run() {
 	_objs.push_back(objFactory.newWall(7,14,10,0));
 	_objs.push_back(objFactory.newWall(7,8,6,0));
 	_objs.push_back(objFactory.newWall(19,3,-2,0));
-	_objs.push_back(objFactory.newWall(17,3,0,6));
+	_objs.push_back(objFactory.newWall(17,3,0,8));
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
@@ -123,7 +123,7 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	// Determine the onFloor flag
 	bool onFloor = false;
 	for(int i=1;i<_objs.size();i++){
-		if(dynamic_cast<Wall*>(_objs[i]) && player->intersect(_objs[i]))
+		if(dynamic_cast<Wall*>(_objs[i]) && obj->intersect(_objs[i]))
 			onFloor = true;
 	}
 
