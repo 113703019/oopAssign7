@@ -4,15 +4,13 @@
 ---
 
 ## How to play
-W - Jump
+W / Space bar - Jump & climb on walls
 
 A / D - Left / Right
 
 You have a total of 3 hearts.
 
-When you touch enemies or traps, you lose 1 heart.
-
-However, you can jump on enemies to defeat them.
+When you touch enemies, you lose 1 heart.
 
 Try to reach the green door on the right!
 
