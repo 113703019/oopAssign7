@@ -99,11 +99,15 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 		yCheck = obj->getPosition().y()+y+1; // Free fall, y opposite
 	}
 
-	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH && yCheck<GAME_WINDOW_HEIGHT){
-		if(dynamic_cast<Player*>(obj)) // Player
-			obj->update({playerMove.x(),playerMove.y()-(yCheck>=0 ? 0 : yCheck)});
-		else if(dynamic_cast<Enemy*>(obj)) // Enemies
-			obj->update({x,y});
+	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH){
+		if(dynamic_cast<Player*>(obj)){ // Player
+			obj->update({playerMove.x(),(yCheck<GAME_WINDOW_HEIGHT ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
+			std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
+			std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
+			std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
+				  << playerMove.y()+(yCheck>=0 ? 0 : yCheck) << ")" << std::endl; //debug
+		}else if(dynamic_cast<Enemy*>(obj)) // Enemies
+			obj->update({x,(yCheck<GAME_WINDOW_HEIGHT ? y+1/*Free fall, y opposite*/ : 0)});
 	}
 }
 
