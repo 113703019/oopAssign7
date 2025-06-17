@@ -110,18 +110,21 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH){
 		if(dynamic_cast<Player*>(obj)){ // Player
-			obj->update({playerMove.x(),(yCheck<GAME_WINDOW_HEIGHT ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
+			obj->update({/*Player x*/playerMove.x(),
+				     /*Player y*/(yCheck<GAME_WINDOW_HEIGHT ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
 			//std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
 			//	  << playerMove.y()+(yCheck>=0 ? 0 : yCheck) << ")" << std::endl; //debug
 		}else if(dynamic_cast<Enemy*>(obj)) // Enemies
-			obj->update({x,(yCheck<GAME_WINDOW_HEIGHT ? y+1/*Free fall, y opposite*/ : 0)});
+			obj->update({/*Enemy x*/x,
+				     /*Enemy y*/(yCheck<GAME_WINDOW_HEIGHT ? y+1/*Free fall, y opposite*/ : 0)});
 	}
 }
 
 Position Controller::handleInput(int keyInput){
 	GameObject*& player = _objs[0];
+	int jumpHeight = 3;
 
     // TODO 
     // handle key events.
@@ -130,14 +133,14 @@ Position Controller::handleInput(int keyInput){
 		case(' '):{ // y opposite
 			// Make the player jump
 			// Touch / Climb the map borders
-			if(player->getPosition().y()-3 >= 0
+			if(player->getPosition().y()-jumpHeight >= 0
 			&& (player->getPosition().y()==GAME_WINDOW_HEIGHT-1
 			|| player->getPosition().x()==0 || player->getPosition().x()==GAME_WINDOW_WIDTH-1))
-				return {0,-3};
+				return {0,(-1)*jumpHeight};
 			for(int i=1;i<_objs.size();i++){
 				// Touch the ground / Climb walls
 				if(dynamic_cast<Wall*>(_objs[i]) && player->intersect(_objs[i]))
-					return {0,-3};
+					return {0,(-1)*jumpHeight};
 			} return {0,0};
 		} case('a'):{
 			return {-1,0};

@@ -19,7 +19,7 @@ Position GameObject::getPosition() const {
 
 // Current problem: Some parts of the wall icon doesns't seem to be in the collide hitbox range
 
-bool GameObject::intersect(ICollider *ogOther){
+int GameObject::intersect(ICollider *ogOther){
     GameObject* other = dynamic_cast<GameObject*>(ogOther);
     // Declare stuff
     struct Range{
@@ -41,14 +41,23 @@ bool GameObject::intersect(ICollider *ogOther){
 
     // Check x intersection
     for(int i=tCover.x.start-range;i<tCover.x.end+range;i++){
-        if(oCover.x.start==i || oCover.x.end-1==i){
-            // Check y intersection
-            for(int j=tCover.y.start-range;j<tCover.y.end+range;j++){
-                if(oCover.y.start==j || oCover.y.end-1==j)
-                    return true;
-            }
-        }
-    } return false;
+	if(oCover.x.start==i || oCover.x.end-1==i){
+		// x strict intersection
+		if(i>=tCover.x.start && i<=tCover.x.end){
+			// y strict intersection
+			for(int j=tCover.y.start;j<tCover.y.end;j++){
+				if(oCover.y.start==j || oCover.y.end-1==j)
+					return 2;
+			}
+		}
+		// x lenient intersection
+		// y lenient intersection
+		for(int j=tCover.y.start-range;j<tCover.y.end+range;j++){
+			if(oCover.y.start==j || oCover.y.end-1==j)
+				return 1;
+		}
+	}
+    } return 0;
 }
 
 Player::Player(Position pos)
@@ -60,13 +69,11 @@ void Player::update(Position move){
 }
 
 void Player::onCollision(ICollider *ogOther){
-	// The player can only collide with 3 types of objects:
-	// (1) Boundaries - Walls & Floors
-	// (2) Damage - Enemies & Traps
-	// (3) Goal - The green door
-    /*if(dynamic_cast<Wall*>(ogOther)){
-        // Block the player, do not let it go through walls or floors.
-	} else if(dynamic_cast<Enemy*>(ogOther)){
+	// The player can only collide with 2 types of objects:
+	// (1) Damage - Enemies & Traps
+	// (2) Goal - The green door
+	GameObject* other = dynamic_cast<GameObject*>(ogOther);
+	/*if(dynamic_cast<Enemy*>(ogOther)){
 		// Damage the player. Better if the player goes flying for a little.
 	} else if(dynamic_cast<Goal*>(ogOther)){
 		// End the game. The player wins.
@@ -80,17 +87,7 @@ Wall::Wall(Position pos,Position extend)
 
 void Wall::update(Position move){}
 
-void Wall::onCollision(ICollider *ogOther){
-	// The wall can only collide with 2 types of objects:
-	// (1) Player
-	// (2) Damage - Enemies
-	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(dynamic_cast<Player*>(ogOther)){
-		// Block the player, do not let it go through walls or floors.
-	} else if(dynamic_cast<Enemy*>(ogOther)){
-		// Block the enemy, do not let it go through walls or floors.
-	}*/
-}
+void Wall::onCollision(ICollider *ogOther) {}
 
 Enemy::Enemy(Position pos)
 	:GameObject(iconFac.newIcon(RED,1,1),pos) {}
@@ -101,13 +98,10 @@ void Enemy::update(Position move){
 }
 
 void Enemy::onCollision(ICollider *ogOther){
-	// The enemy can only collide with 2 types of objects:
-	// (1) Boundaries - Walls / Floors
-	// (2) Player
+	// The enemy can only collide with 1 types of object:
+	// (1) Player
 	GameObject* other = dynamic_cast<GameObject*>(ogOther);
-	/*if(dynamic_cast<Wall*>(ogOther)){
-		// Block the enemy, do not let it go through walls or floors.
-	} else if(dynamic_cast<Player*>(ogOther)){
+	/*if(dynamic_cast<Player*>(ogOther)){
 		// Damage the player. Better if the player goes flying for a little.
 	}*/
 }

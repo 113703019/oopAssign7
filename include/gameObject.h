@@ -13,7 +13,7 @@ class GameObject : public ICollider{
   	 	Icon getIcon() const;
 
    	 	virtual void update(Position) = 0;
-		bool intersect(ICollider *) override;
+		int intersect(ICollider *) override;
 	protected:
     	Position _pos;
     	Icon _icon;
