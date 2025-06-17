@@ -36,14 +36,15 @@ void Controller::run() {
 	_objs.push_back(objFactory.newWall(5,16,2,0));
 	_objs.push_back(objFactory.newWall(7,14,10,0));
 	_objs.push_back(objFactory.newWall(7,8,6,0));
-	_objs.push_back(objFactory.newWall(20,3,-2,0));
-	_objs.push_back(objFactory.newWall(18,3,0,6));
+	_objs.push_back(objFactory.newWall(19,3,-2,0));
+	_objs.push_back(objFactory.newWall(17,3,0,6));
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
 
 	// Goal
-	
+	_objs.push_back(objFactory.newGoal(19,1));
+
     int hp = 3;
 	int enemyLogic = -5; // Controls enemy movement: [-5,5]
 	
@@ -128,8 +129,10 @@ Position Controller::handleInput(int keyInput){
 		case('w'):
 		case(' '):{ // y opposite
 			// Make the player jump
-			// Touch the map border
-			if(player->getPosition().y()==GAME_WINDOW_HEIGHT-1)
+			// Touch / Climb the map borders
+			if(player->getPosition().y()-3 >= 0
+			&& (player->getPosition().y()==GAME_WINDOW_HEIGHT-1
+			|| player->getPosition().x()==0 || player->getPosition().x()==GAME_WINDOW_WIDTH-1))
 				return {0,-3};
 			for(int i=1;i<_objs.size();i++){
 				// Touch the ground / Climb walls
