@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <ctime>
 #include <cstdlib>
 #include <thread>
@@ -34,7 +35,8 @@ void Controller::run() {
 	
 	// Enemies
 	_objs.push_back(objFactory.newEnemy(10,1));
-	// Make a goal...
+
+	// Goal
 	
     int hp = 3;
 	int enemyLogic = -5; // Controls enemy movement: [-5,5]
@@ -102,23 +104,32 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	if(xCheck>=0 && xCheck<GAME_WINDOW_WIDTH){
 		if(dynamic_cast<Player*>(obj)){ // Player
 			obj->update({playerMove.x(),(yCheck<GAME_WINDOW_HEIGHT ? playerMove.y()+1/*Free fall, y opposite*/ : 0)});
-			std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
-			std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
-			std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
-				  << playerMove.y()+(yCheck>=0 ? 0 : yCheck) << ")" << std::endl; //debug
+			//std::cout << "[DEBUG] (controller.cpp - moveInMap) (xCheck,yCheck) = (" << xCheck << "," << yCheck << ")" << std::endl; //debug
+			//std::cout << "[DEBUG] (controller.cpp - moveInMap) playerMove = (" << playerMove.x() << "," << playerMove.y() << ")" << std::endl; //debug
+			//std::cout << "[DEBUG] (controller.cpp - moveInMap) Player movement: (" << playerMove.x() << ","
+			//	  << playerMove.y()+(yCheck>=0 ? 0 : yCheck) << ")" << std::endl; //debug
 		}else if(dynamic_cast<Enemy*>(obj)) // Enemies
 			obj->update({x,(yCheck<GAME_WINDOW_HEIGHT ? y+1/*Free fall, y opposite*/ : 0)});
 	}
 }
 
 Position Controller::handleInput(int keyInput){
+	GameObject*& player = _objs[0];
 
     // TODO 
     // handle key events.
 	switch(keyInput){
-		case('w'):{ // y opposite
+		case('w'):
+		case(' '):{ // y opposite
 			// Make the player jump
-			return {0,-2};
+			// Touch the map border
+			if(player->getPosition().y()==GAME_WINDOW_HEIGHT-1)
+				return {0,-3};
+			for(int i=1;i<_objs.size();i++){
+				// Touch the ground / Climb walls
+				if(dynamic_cast<Wall*>(_objs[i]) && player->intersect(_objs[i]))
+					return {0,-3};
+			} return {0,0};
 		} case('a'):{
 			return {-1,0};
 		} case('d'):{
