@@ -103,8 +103,22 @@ void Enemy::onCollision(ICollider *ogOther){
 	// (2) Player
 	GameObject* other = dynamic_cast<GameObject*>(ogOther);
 	/*if(dynamic_cast<Wall*>(ogOther)){
-        // Block the enemy, do not let it go through walls or floors.
-    } else if(dynamic_cast<Player*>(ogOther)){
-        // Damage the player. Better if the player goes flying for a little.
-    }*/
+		// Block the enemy, do not let it go through walls or floors.
+	} else if(dynamic_cast<Player*>(ogOther)){
+		// Damage the player. Better if the player goes flying for a little.
+	}*/
+}
+
+Goal::Goal(Position pos)
+	:GameObject(iconFac.newIcon(GREEN,1,2),pos) {}
+
+void Goal::update(Position move) {}
+
+void Goal::onCollision(ICollider *ogOther){
+	// The goal can only collide with 1 types of object:
+	// (1) Player
+	GameObject* other = dynamic_cast<GameObject*>(ogOther);
+	/*if(dynamic_cast<Player*>(ogOther)){
+		// End the game. The player wins.
+	}*/
 }

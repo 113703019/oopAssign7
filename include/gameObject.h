@@ -41,4 +41,11 @@ class Enemy : public GameObject{
 		void onCollision(ICollider *) override;
 };
 
+class Goal : public GameObject{
+	public:
+		Goal(Position);
+		void update(Position) override;
+		void onCollision(ICollider *) override;
+};
+
 #endif
