@@ -124,7 +124,8 @@ void Controller::moveInMap(GameObject *obj,Position playerMove,int enemyLogic){
 	// Determine the onFloor flag
 	bool onFloor = false;
 	for(int i=1;i<_objs.size();i++){
-		if(dynamic_cast<Wall*>(_objs[i]) && obj->intersect(_objs[i]))
+		if(dynamic_cast<Wall*>(_objs[i]) && obj->intersect(_objs[i])
+		  && obj->getPosition().y()<_objs[i]->getPosition().y())
 			onFloor = true;
 	}
 

@@ -39,25 +39,15 @@ int GameObject::intersect(ICollider *ogOther){
     // I made it so that the collision works even if they simply collide (not intersect)
     int range = 1;
 
-    // Check x intersection
-    for(int i=tCover.x.start-range;i<tCover.x.end+range;i++){
-	if(oCover.x.start==i || oCover.x.end-1==i){
-		// x strict intersection
-		if(i>=tCover.x.start && i<=tCover.x.end){
-			// y strict intersection
-			for(int j=tCover.y.start;j<tCover.y.end;j++){
-				if(oCover.y.start==j || oCover.y.end-1==j)
-					return 2;
-			}
-		}
-		// x lenient intersection
-		// y lenient intersection
-		for(int j=tCover.y.start-range;j<tCover.y.end+range;j++){
-			if(oCover.y.start==j || oCover.y.end-1==j)
-				return 1;
-		}
-	}
-    } return 0;
+    // Check intersection
+    bool xStrictOverlap = (tCover.x.start < oCover.x.end) && (oCover.x.start < tCover.x.end);
+    bool yStrictOverlap = (tCover.y.start < oCover.y.end) && (oCover.y.start < tCover.y.end);
+    bool xLenientOverlap = (tCover.x.start-range < oCover.x.end) && (oCover.x.start < tCover.x.end+range);
+    bool yLenientOverlap = (tCover.y.start-range < oCover.y.end) && (oCover.y.start < tCover.y.end+range);
+    
+    if(xStrictOverlap && yStrictOverlap) return 2;
+    else if(xLenientOverlap && yLenientOverlap) return 1;
+    else return 0;
 }
 
 Player::Player(Position pos)
