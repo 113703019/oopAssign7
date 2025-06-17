@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <sstream>
 #include <ctime>
 #include <cstdlib>
 #include <thread>
 #include <unistd.h>
 #include <termios.h>
 
+#include "AnsiPrint.h"
 #include "environment.h"
 #include "controller.h"
 #include "gameObjectFactory.h"
@@ -66,6 +67,15 @@ void Controller::run() {
 			else if(dynamic_cast<Enemy*>(obj)) moveInMap(obj,{0,0},enemyLogic++);
             _view.updateGameObject(obj);
         } _view.render();
+
+	// Show hp points
+	for(int i=0;i<9;i++){
+		if(hp>=(i/3+1)){
+		if(i%3==0) std::cout << '<';
+		else if(i%3==1) std::cout << '3';
+		else std::cout << ' ';
+		}
+	} std::cout << std::endl;
 
 		// Collision
 		for(int A=0;A<_objs.size();A++){

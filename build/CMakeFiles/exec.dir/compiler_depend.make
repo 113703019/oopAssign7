@@ -194,6 +194,7 @@ CMakeFiles/exec.dir/src/AnsiPrint.cpp.o: /home/zoe/oopAssign7/src/AnsiPrint.cpp 
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/exec.dir/src/controller.cpp.o: /home/zoe/oopAssign7/src/controller.cpp \
+  /home/zoe/oopAssign7/include/AnsiPrint.h \
   /home/zoe/oopAssign7/include/collider.h \
   /home/zoe/oopAssign7/include/controller.h \
   /home/zoe/oopAssign7/include/environment.h \
@@ -248,6 +249,7 @@ CMakeFiles/exec.dir/src/controller.cpp.o: /home/zoe/oopAssign7/src/controller.cp
   /usr/include/c++/13/bits/range_access.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/std_thread.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -299,6 +301,7 @@ CMakeFiles/exec.dir/src/controller.cpp.o: /home/zoe/oopAssign7/src/controller.cp
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/ratio \
+  /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
@@ -1319,8 +1322,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 
 /usr/include/c++/13/bits/codecvt.h:
 
-/usr/include/asm-generic/ioctls.h:
-
 /usr/include/asm-generic/ioctl.h:
 
 /home/zoe/oopAssign7/src/view.cpp:
@@ -1340,6 +1341,8 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/13/tr1/special_function_util.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
@@ -1469,8 +1472,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 
 /usr/include/stdc-predef.h:
 
-/usr/include/c++/13/tr1/special_function_util.h:
-
 /usr/include/c++/13/ios:
 
 /usr/include/c++/13/bits/functexcept.h:
@@ -1554,6 +1555,10 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/c++/13/cwctype:
+
+/usr/include/asm-generic/ioctls.h:
+
+/usr/include/c++/13/bits/sstream.tcc:
 
 /usr/include/c++/13/ratio:
 
@@ -1697,8 +1702,6 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 
 /usr/include/c++/13/bits/stl_relops.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
@@ -1818,6 +1821,10 @@ CMakeFiles/exec.dir/src/view.cpp.o: /home/zoe/oopAssign7/src/view.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/c++/13/limits:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/c++/13/sstream:
 
 /usr/include/c++/13/thread:
 

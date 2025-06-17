@@ -196,6 +196,7 @@ CMakeFiles/exec.dir/src/AnsiPrint.cpp.o
 
 CMakeFiles/exec.dir/src/controller.cpp.o
  /home/zoe/oopAssign7/src/controller.cpp
+ /home/zoe/oopAssign7/include/AnsiPrint.h
  /home/zoe/oopAssign7/include/collider.h
  /home/zoe/oopAssign7/include/controller.h
  /home/zoe/oopAssign7/include/environment.h
@@ -250,6 +251,7 @@ CMakeFiles/exec.dir/src/controller.cpp.o
  /usr/include/c++/13/bits/range_access.h
  /usr/include/c++/13/bits/refwrap.h
  /usr/include/c++/13/bits/requires_hosted.h
+ /usr/include/c++/13/bits/sstream.tcc
  /usr/include/c++/13/bits/std_abs.h
  /usr/include/c++/13/bits/std_thread.h
  /usr/include/c++/13/bits/stl_algobase.h
@@ -301,6 +303,7 @@ CMakeFiles/exec.dir/src/controller.cpp.o
  /usr/include/c++/13/ostream
  /usr/include/c++/13/pstl/pstl_config.h
  /usr/include/c++/13/ratio
+ /usr/include/c++/13/sstream
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
